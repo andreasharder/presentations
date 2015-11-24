@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js – The HTML Presentation Framework</title>
+		<title>KS Ignite</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -223,10 +223,36 @@ bootstrap(AppComponent);
 			 </section>
 			 
 			<section>
-				<h2>Protoperties</h2>
-				<p></p>
+				<h2>References</h2>
+				<p>Refs are defined by using a # sign </p>
+				<p>They can be used to create a references to DOM elements </p>
+				<pre><code><button (click)="onClick(input.value)">foo</button></code></pre>
+				 <pre><code><input #input type="text" name="user"/></code></pre>
+				 <pre><code>	export class TodoInput {
+		onClick(value){
+		console.log(value); 
+	 	}
+	 } </code></pre>
+	 		<br/> 
+			 <p>This should log the text from the input field to the console, because the reference of the input element is 
+				 passed on to the onClick function and the value property has been invoked to get the value</p>
 			</section>
-			 
+			 <section>
+				 <h2>Directives</h2>
+				 <p>Directives are declared using *ng- notation</p>
+				 <p>Some examples are *ng-if *ng-for</p>
+				 <pre><code>
+<ul class="heroes">
+	<li *ng-for="#hero of getHeroes()" (click)="onSelect(hero)">
+		<span class="badge">i</span> {{hero.name}}
+	</li>
+</ul>
+<div *ng-if="selectedHero">
+	<hero-details [hero]="selectedHero"></hero-details>
+</div>
+
+				 </code></pre>
+			 </section>
 			 
 			 
 				<!-- Example of nested vertical slides -->
