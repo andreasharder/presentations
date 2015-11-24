@@ -230,6 +230,18 @@ bootstrap(AppComponent);
 				 <small> $event will be the click event object in this case </small>
 			 </section>
 			 
+			 <section>
+				 <h2>Properties</h2>
+				 <p>It is possible to interact with any HTML element by using properties in a form of [attribute-name]</p>
+				 <p>
+					 For example if you would like to toggle visibility of an element you can use
+					 <pre><code><input [hidden]="toggle()"></code></pre>
+					 where toggle() will just return a bool to either show / hide a particular element
+				 </p>
+			 </section>
+			 
+			 
+			 
 			<section>
 				<h2>References</h2>
 				<p>Refs are defined by using a # sign </p>
