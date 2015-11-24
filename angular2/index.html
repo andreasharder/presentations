@@ -95,24 +95,25 @@
 			</section>
 
 
-			<section data-markdown>
-					<script type="text/template">
-						```
-						class MyComponent {
-
-								greeting: string; 
-								
-								constructor(message: string){
-									this.greeting = message; 
-									
-								}
-								greet(){
-									return "Hello" + this.greeting; 
-								}
-							}
-						```
-					</script>
-					
+			<section>
+		<pre><code>
+class MyComponent {
+ greeting: string; 
+		constructor(message: string){
+	this.greeting = message; 
+				}
+	greet(){
+	 return "Hello" + this.greeting; 
+		}
+	}
+		</code></pre>
+		
+		For less ceremony in the constructors, you can use public instead to achive the same effect. 
+<pre><code>
+class MyComponent {
+	constructor(public message:string){}
+}
+</code></pre> 
 			</section>
 
 
@@ -218,8 +219,15 @@ bootstrap(AppComponent);
 				 <h2>Events</h2>
 				 <p>In Angular2 Events are defined via (click) notation <br/> where click is the event being listened to</p>
 				 <p>This applies to all DOM events and custom events as well</p>
+				 <p>You can also specify events using on- dash notation" <br/> 
+				 	<small>e.g on-click="doSomething() </small>
+				  </p>
+				 
 				 <pre><code><button (click)="input.focus()">foo</button></code></pre>
 				 <pre><code><input #input type="text" name="user"/></code></pre>
+				  <p>First parameter if specified is an event object</p>
+				   <pre><code><button (click)="input.focus($event)">foo</button></code></pre>
+				 <small> $event will be the click event object in this case </small>
 			 </section>
 			 
 			<section>
@@ -254,75 +262,33 @@ bootstrap(AppComponent);
 				 </code></pre>
 			 </section>
 			 
+			 <section>
+				 <h2>Services</h2>
+				 <p>Services are where you would put your logic to either access http resources or some other business logic</p>
+				 <p>To make the same service instance available though out the whole applications, it needs to be bootstraped.</p>
+				 
+				 <pre><code>
+import {HeroService} from '../hero.service';
+
+class AppComponent {
+	public title = 'Tour of Heroes';
+}
+
+bootstrap(AppComponent, [ROUTER_PROVIDERS, HeroService]);
+					 
+				 </code></pre>
+			 </section>
 			 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
+			 <section>
+				 <h2>Model & Binding</h2>
+				 <p>Ng-model uses [(ng-model)] = "" syntax to do the binding, where [ ] represent input i.e form control > model </p>
+				 <p> and () represent output model > form control, hence resulting in two way binding </p>
+				 <pre><code>[(ng-model)]="hero.score" </code></pre>
+				 
+				 
+			 </section>
+			 
+			 	<section>
 					<section id="fragments">
 						<h2>Fragments</h2>
 						<p>Hit the next arrow...</p>
